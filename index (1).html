@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sam Angeline Misa | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F3;
+      --warm-white: #FFFFFF;
+      --soft-sand: #F0EBE1;
+      --accent: #4A7C6F;
+      --accent-light: #E8F2EF;
+      --accent-dark: #2E5048;
+      --text-dark: #1C1C1C;
+      --text-mid: #4A4A4A;
+      --text-light: #888;
+      --border: #E2DDD5;
+      --nav-height: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      background: rgba(250,248,243,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text-dark); transition: 0.3s; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-height) + 4rem) 5% 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 4rem;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-avatar {
+      flex-shrink: 0;
+      width: 320px;
+      height: 380px;
+      background: var(--soft-sand);
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 6rem;
+      color: var(--accent);
+      border: 2px solid var(--border);
+      animation: morph 8s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes morph {
+      0%, 100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+      25% { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
+      50% { border-radius: 45% 55% 60% 40% / 40% 60% 45% 55%; }
+      75% { border-radius: 60% 40% 45% 55% / 55% 45% 60% 40%; }
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 5%; max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.5px;
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .about-details { display: flex; flex-direction: column; gap: 1rem; }
+
+    .detail-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .detail-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .detail-label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+    .detail-value { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); }
+
+    /* SKILLS */
+    #skills { background: var(--soft-sand); max-width: 100%; padding: 6rem 5%; }
+    #skills .inner { max-width: 1100px; margin: 0 auto; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(74,124,111,0.12);
+    }
+
+    .skill-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .skill-type { font-size: 0.8rem; color: var(--text-light); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      border-color: var(--accent);
+    }
+
+    .project-thumb {
+      height: 160px;
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--soft-sand) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      color: var(--accent);
+    }
+
+    .project-body { padding: 1.5rem; }
+    .project-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .project-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* EDUCATION */
+    .edu-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .edu-icon {
+      width: 56px; height: 56px;
+      background: var(--accent);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .edu-school { font-weight: 600; font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .edu-degree { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .edu-year {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--text-dark); max-width: 100%; padding: 6rem 5%; color: white; }
+    #contact .inner { max-width: 1100px; margin: 0 auto; }
+    #contact .section-label { color: #7fcfc0; }
+    #contact .section-title { color: white; margin-bottom: 1rem; }
+    #contact .section-subtitle { color: #aaa; margin-bottom: 3rem; font-size: 1rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .contact-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(127,207,192,0.4);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-icon {
+      width: 44px; height: 44px;
+      background: rgba(127,207,192,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: #7fcfc0;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-label { font-size: 0.75rem; color: #888; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-card-value { font-size: 0.9rem; font-weight: 500; word-break: break-all; }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: #666;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column-reverse; text-align: center; padding-top: calc(var(--nav-height) + 2rem); gap: 2rem; }
+      .hero p { margin: 0 auto 2rem; }
+      .hero-btns { justify-content: center; }
+      .hero-avatar { width: 200px; height: 220px; font-size: 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .edu-card { flex-direction: column; gap: 1rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-height); left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); padding: 1rem 5%; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Sam<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="hero">
+      <div class="hero-text fade-in">
+        <span class="hero-tag">Web Developer</span>
+        <h1>Hi, I'm <em>Sam Angeline</em> Misa</h1>
+        <p>Passionate about building responsive, user-friendly, and visually appealing websites while continuously learning and improving my craft.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-avatar fade-in" style="transition-delay:0.2s; padding:0; overflow:hidden;">
+        <img src="profile.jpg" alt="Sam Angeline Misa" style="width:100%; height:100%; object-fit:cover; object-position: center top;" onerror="this.parentElement.innerHTML='SA'"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm Sam Angeline Misa, a passionate web developer from the Philippines dedicated to crafting digital experiences that are both beautiful and functional.</p>
+        <p>I believe great websites are more than just code — they tell a story, solve a problem, and connect with people. I'm constantly learning new technologies and pushing my skills further every day.</p>
+        <p>When I'm not coding, I enjoy exploring design trends, experimenting with Canva, and finding creative ways to make the web a better place.</p>
+      </div>
+      <div class="about-details fade-in" style="transition-delay:0.15s;">
+        <div class="detail-card">
+          <div class="detail-icon"><i class="fas fa-user"></i></div>
+          <div>
+            <div class="detail-label">Full Name</div>
+            <div class="detail-value">Sam Angeline Misa</div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon"><i class="fas fa-cake-candles"></i></div>
+          <div>
+            <div class="detail-label">Birthday</div>
+            <div class="detail-value">November 15, 2004</div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="detail-label">Location</div>
+            <div class="detail-value">Philippines</div>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon"><i class="fas fa-code"></i></div>
+          <div>
+            <div class="detail-label">Role</div>
+            <div class="detail-value">Web Developer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills" style="max-width:100%; padding:6rem 5%;">
+    <div class="inner">
+      <p class="section-label">What I Do</p>
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card fade-in">
+          <div class="skill-icon"><i class="fab fa-html5"></i></div>
+          <div class="skill-name">HTML</div>
+          <div class="skill-type">Technical</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.05s;">
+          <div class="skill-icon"><i class="fab fa-js"></i></div>
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-type">Technical</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.1s;">
+          <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div class="skill-name">Responsive Web Design</div>
+          <div class="skill-type">Technical</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.15s;">
+          <div class="skill-icon"><i class="fas fa-palette"></i></div>
+          <div class="skill-name">Canva</div>
+          <div class="skill-type">Design</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.2s;">
+          <div class="skill-icon"><i class="fas fa-film"></i></div>
+          <div class="skill-name">Editing</div>
+          <div class="skill-type">Creative</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.25s;">
+          <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="skill-name">Problem-Solving</div>
+          <div class="skill-type">Soft Skill</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.3s;">
+          <div class="skill-icon"><i class="fas fa-users"></i></div>
+          <div class="skill-name">Teamwork</div>
+          <div class="skill-type">Soft Skill</div>
+        </div>
+        <div class="skill-card fade-in" style="transition-delay:0.35s;">
+          <div class="skill-icon"><i class="fas fa-book-open"></i></div>
+          <div class="skill-name">Continuous Learning</div>
+          <div class="skill-type">Soft Skill</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">My Work</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-thumb"><i class="fas fa-globe"></i></div>
+        <div class="project-body">
+          <span class="project-tag">HTML · CSS</span>
+          <div class="project-title">Personal Portfolio Website</div>
+          <div class="project-desc">A responsive personal portfolio to showcase my skills, education, and projects. Built with clean HTML and CSS with a light, modern aesthetic.</div>
+        </div>
+      </div>
+      <div class="project-card fade-in" style="transition-delay:0.1s;">
+        <div class="project-thumb"><i class="fas fa-palette"></i></div>
+        <div class="project-body">
+          <span class="project-tag">Canva · Design</span>
+          <div class="project-title">Graphic Design Projects</div>
+          <div class="project-desc">Various creative design outputs including posters, social media graphics, and presentations made using Canva with attention to layout and visual hierarchy.</div>
+        </div>
+      </div>
+      <div class="project-card fade-in" style="transition-delay:0.2s;">
+        <div class="project-thumb"><i class="fas fa-laptop-code"></i></div>
+        <div class="project-body">
+          <span class="project-tag">HTML · JavaScript</span>
+          <div class="project-title">Web Development Practice Projects</div>
+          <div class="project-desc">A collection of hands-on web projects built during my studies, focusing on responsive design principles and interactive JavaScript features.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card fade-in">
+      <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div>
+        <div class="edu-school">STI College – Tanay</div>
+        <div class="edu-degree">Information Technology · Web Development Track</div>
+        <span class="edu-year">Current Student</span>
+        <p style="margin-top:1rem; color:var(--text-mid); font-size:0.95rem;">Studying at STI College Tanay, developing a strong foundation in web development, programming fundamentals, and technology-driven problem solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact" style="max-width:100%; padding:6rem 5%; background:var(--text-dark);">
+    <div class="inner">
+      <p class="section-label">Let's Talk</p>
+      <h2 class="section-title" style="color:white;">Get in Touch</h2>
+      <p class="section-subtitle">Feel free to reach out — I'd love to connect!</p>
+      <div class="contact-grid">
+        <a href="mailto:samangeline42@gmail.com" class="contact-card fade-in">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">samangeline42@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:09475367849" class="contact-card fade-in" style="transition-delay:0.1s;">
+          <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-card-label">Phone</div>
+            <div class="contact-card-value">0947 536 7849</div>
+          </div>
+        </a>
+        <div class="contact-card fade-in" style="transition-delay:0.2s;">
+          <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-card-label">Location</div>
+            <div class="contact-card-value">Philippines 🇵🇭</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Designed & built by <span>Sam Angeline Misa</span> · 2024</p>
+  </footer>
+
+  <script>
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('visible'));
+    });
+  </script>
+
+</body>
+</html>
